@@ -1,7 +1,6 @@
 <?php
 $accessToken = getenv('LINE_CHANNEL_ACCESS_TOKEN');
 
-
 //ユーザーからのメッセージ取得
 $json_string = file_get_contents('php://input');
 $jsonObj = json_decode($json_string);
@@ -46,14 +45,14 @@ if ($text == 'はい') {
           [
             "type" => "message",
             "label" => "違うやつ",
-            "text" => "違うやつお願い"
+            "text" => "他を探す"
           ]
       ]
     ]
   ];
 } else if ($text == 'いいえ') {
   exit;
-} else if ($text == '違うやつお願い') {
+} else if ($text == '他を探す') {
   $response_format_text = [
     "type" => "template",
     "altText" => "候補を３つご案内しています。",
@@ -129,13 +128,13 @@ if ($text == 'はい') {
       ]
     ]
   ];
-} else {
+} else if ($text == 'こんにちは') {
   $response_format_text = [
     "type" => "template",
-    "altText" => "こんにちわ 何かご用ですか？（はい／いいえ）",
+    "altText" => "こんにちは、何かご用ですか？（はい／いいえ）",
     "template" => [
         "type" => "confirm",
-        "text" => "こんにちわ 何かご用ですか？",
+        "text" => "こんにちは、何かご用ですか？",
         "actions" => [
             [
               "type" => "message",
@@ -150,12 +149,20 @@ if ($text == 'はい') {
         ]
     ]
   ];
+} else {
+  //ドコモの雑談データ取得
+  $response = chat($text);
+ 
+  $response_format_text = [
+      "type" => "text",
+      "text" =>  $response
+  ];
 }
 
 $post_data = [
 	"replyToken" => $replyToken,
 	"messages" => [$response_format_text]
-	];
+];
 
 $ch = curl_init("https://api.line.me/v2/bot/message/reply");
 curl_setopt($ch, CURLOPT_POST, true);
@@ -168,3 +175,27 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     ));
 $result = curl_exec($ch);
 curl_close($ch);
+
+
+//ドコモの雑談APIから雑談データを取得
+function chat($text) {
+    // docomo chatAPI
+    $api_key = getenv('DOCOMO_API_KEY');
+    $api_url = sprintf('https://api.apigw.smt.docomo.ne.jp/dialogue/v1/dialogue?APIKEY=%s', $api_key);
+    $req_body = array('utt' => $text);
+    
+    $headers = array(
+        'Content-Type: application/json; charset=UTF-8',
+    );
+    $options = array(
+        'http'=>array(
+            'method'  => 'POST',
+            'header'  => implode("\r\n", $headers),
+            'content' => json_encode($req_body),
+            )
+        );
+    $stream = stream_context_create($options);
+    $res = json_decode(file_get_contents($api_url, false, $stream));
+ 
+    return $res->utt;
+}
