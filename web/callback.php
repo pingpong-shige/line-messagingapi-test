@@ -168,8 +168,8 @@ if ($text == 'はい') {
 }
 
 $post_data = [
-	/*"replyToken" => $replyToken,*/
-	"messages" => [$response_format_text]
+	/*"replyToken" => $replyToken,
+	"messages" => [$response_format_text]*/
 ];
 
 $ch = curl_init("https://api.line.me/v2/bot/message/reply");
