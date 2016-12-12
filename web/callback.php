@@ -11,8 +11,14 @@ $text = $jsonObj->{"events"}[0]->{"message"}->{"text"};
 //ReplyToken取得
 $replyToken = $jsonObj->{"events"}[0]->{"replyToken"};
 
+
+$type = $jsonObj->{"events"}[0]->{"message"}->{"type"};
+//スタンプ取得
+$text = $jsonObj->{"events"}[0]->{"message"}->{"sticker"};
+//ReplyToken取得
+$replyToken = $jsonObj->{"events"}[0]->{"replyToken"};
 //メッセージ以外のときは何も返さず終了
-if($type != "text"){
+if($type != "text" || $type != "sticker"){
 	exit;
 }
 
