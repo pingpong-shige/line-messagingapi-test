@@ -7,8 +7,8 @@
       "LINE_CHANNEL_ACCESS_TOKEN": {
         "description": "Channel Access Token (LINE developers の Basic information で確認できます)"
       },
-      "DOCOMO_API_KEY": {
-        "description": "Docomo Api Key (Docomo Developer support の API利用申請・管理 で確認できます)"
+      "DOCOMO_API_Key": {
+        "description": "Docomo Api Key (Docomo Developer support の API利用申請・管理 で確認できます。)"
       }
     }
 }
