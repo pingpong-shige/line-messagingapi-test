@@ -168,7 +168,7 @@ if ($text == 'はい') {
 }
 
 $post_data = [
-	"replyToken" => $replyToken,
+	/*"replyToken" => $replyToken,*/
 	"messages" => [$response_format_text]
 ];
 
