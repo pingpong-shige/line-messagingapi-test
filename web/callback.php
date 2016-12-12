@@ -1,5 +1,5 @@
 <?php
-$accessToken = getenv('LINE_CHANNEL_ACCESS_TOKEN');
+/*$accessToken = getenv('LINE_CHANNEL_ACCESS_TOKEN');
 
 //ユーザーからのメッセージ取得
 $json_string = file_get_contents('php://input');
@@ -168,8 +168,8 @@ if ($text == 'はい') {
 }
 
 $post_data = [
-	/*"replyToken" => $replyToken,
-	"messages" => [$response_format_text]*/
+	"replyToken" => $replyToken,
+	"messages" => [$response_format_text]
 ];
 
 $ch = curl_init("https://api.line.me/v2/bot/message/reply");
@@ -205,5 +205,5 @@ function chat($text) {
     $stream = stream_context_create($options);
     $res = json_decode(file_get_contents($api_url, false, $stream));
  
-    return $res->utt;
+    return $res->utt;*/
 }
