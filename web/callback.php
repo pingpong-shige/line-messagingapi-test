@@ -16,7 +16,9 @@ $type = $jsonObj->{"events"}[0]->{"message"}->{"type"};
 //スタンプ取得
 $text = $jsonObj->{"events"}[0]->{"message"}->{"sticker"};
 //ReplyToken取得
-$replyToken = $jsonObj->{"events"}[0]->{"replyToken"};
+$replyToken = $jsonObj->{"STKTXT"=>"[おねがい]","AT_RECV_MODE"=>"2",
+			"STKVER"=>"100","STDID"=>"4","STKPKGID"=>"1",
+			"SKIP_BADGE_COUNT"=>"true"};
 //メッセージ以外のときは何も返さず終了
 if($type != "text" || $type != "sticker"){
 	exit;
