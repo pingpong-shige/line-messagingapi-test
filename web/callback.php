@@ -209,7 +209,7 @@ function chat($text) {
 }*/
 
 
-/*require_once('LineBot.php');
+require_once('LineBot.php');
 // LINE:チャンネルID
 $CHANNEL_ID = '1491932896';
 // LINE:チャンネルシークレット
@@ -220,7 +220,7 @@ $CHANNEL_MID = '@ust3694v';
 $ACCOUNT_KEY = 'i9Deyl1gN1mUCKwOMmHrEswDV61gsddzuq+E/4SPPHc';
 $bot = new LineBot($CHANNEL_ID, $CHANNEL_SECRET, $CHANNEL_MID);
 $bot->sendText('「%s」デスネ...');
-$bot->sendImage($ACCOUNT_KEY);*/
+$bot->sendImage($ACCOUNT_KEY);
 
 /**
 * BingSeachAPIで画像を取得するサンプルコード
@@ -229,7 +229,7 @@ $bot->sendImage($ACCOUNT_KEY);*/
 * @return object 
 */
 
-function search_bing($keyword) {
+/*function search_bing($keyword) {
   //取得したアカウントキー
   $accountKey = 'i9Deyl1gN1mUCKwOMmHrEswDV61gsddzuq+E/4SPPHc';
 
@@ -255,4 +255,4 @@ function search_bing($keyword) {
   $response = json_decode($response);
 
   return $response;
-}
+}*/
