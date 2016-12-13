@@ -215,7 +215,7 @@ $CHANNEL_ID = '1491932896';
 // LINE:チャンネルシークレット
 $CHANNEL_SECRET = '3a1166f4866376b1a42276a124e4d2b3';
 // LINE:MID
-$CHANNEL_MID = 't-shigta';
+$CHANNEL_MID = '@ust3694v';
 // Bingアカウントキー
 $ACCOUNT_KEY = 'i9Deyl1gN1mUCKwOMmHrEswDV61gsddzuq+E/4SPPHc';
 $bot = new LineBot($CHANNEL_ID, $CHANNEL_SECRET, $CHANNEL_MID);
