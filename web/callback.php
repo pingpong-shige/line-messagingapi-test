@@ -209,7 +209,7 @@ function chat($text) {
 }*/
 
 
-require_once('LineBot.php');
+/*require_once('LineBot.php');
 // LINE:チャンネルID
 $CHANNEL_ID = '1491932896';
 // LINE:チャンネルシークレット
@@ -220,4 +220,39 @@ $CHANNEL_MID = '@ust3694v';
 $ACCOUNT_KEY = 'i9Deyl1gN1mUCKwOMmHrEswDV61gsddzuq+E/4SPPHc';
 $bot = new LineBot($CHANNEL_ID, $CHANNEL_SECRET, $CHANNEL_MID);
 $bot->sendText('「%s」デスネ...');
-$bot->sendImage($ACCOUNT_KEY);
+$bot->sendImage($ACCOUNT_KEY);*/
+
+/**
+* BingSeachAPIで画像を取得するサンプルコード
+*
+* @param string $keyword 検索ワード
+* @return object 
+*/
+
+function search_bing($keyword) {
+  //取得したアカウントキー
+  $accountKey = 'i9Deyl1gN1mUCKwOMmHrEswDV61gsddzuq+E/4SPPHc';
+
+  //エンドポイントとパラメーターなどをセット
+  //画像検索以外の場合は$serviceOpを変更
+  $query = urlencode("'{$keyword}'");
+  $rootUri = 'https://api.datamarket.azure.com/Bing/Search';
+  $serviceOp = "Image";
+  $endpoint = "$rootUri/$serviceOp?\$format=json&Query=$query&ImageFilters='Aspect:Wide'";
+
+  //ストリームコンテキストを作成
+  $auth = base64_encode("$accountKey:$accountKey");
+  $data = array(
+    'http' => array(
+    'request_fulluri' => true,
+    'ignore_errors' => true,
+    'header' => "Authorization: Basic $auth")
+  );
+  $context = stream_context_create($data);
+
+  //とりあえず、file_get_contents()でjsonを取得
+  $response = file_get_contents($endpoint, 0, $context);
+  $response = json_decode($response);
+
+  return $response;
+}
