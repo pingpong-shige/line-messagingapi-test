@@ -1,7 +1,9 @@
 <?php
 class LineBot
 {
-    const API_URL = 'https://trialbot-api.line.me/v1/events';
+    //const API_URL = 'https://trialbot-api.line.me/v1/events';
+    //const API_URL = 'https://api.datamarket.azure.com/Bing/Search'
+    const API_URL = 'https://api.line.me/v2/bot/message/reply'
     const TO_CHANNEL = '1383378250';
     const EVENT_TYPE = '138311608800106203';
     public $channel_id;
