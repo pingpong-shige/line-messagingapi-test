@@ -1,5 +1,5 @@
 <?php
-$accessToken = getenv('LINE_CHANNEL_ACCESS_TOKEN');
+/*$accessToken = getenv('LINE_CHANNEL_ACCESS_TOKEN');
 
 //ユーザーからのメッセージ取得
 $json_string = file_get_contents('php://input');
@@ -206,4 +206,18 @@ function chat($text) {
     $res = json_decode(file_get_contents($api_url, false, $stream));
  
     return $res->utt;
-}
+}*/
+
+
+require_once('LineBot.php');
+// LINE:チャンネルID
+$CHANNEL_ID = '1491932896';
+// LINE:チャンネルシークレット
+$CHANNEL_SECRET = '3a1166f4866376b1a42276a124e4d2b3';
+// LINE:MID
+$CHANNEL_MID = 't-shigta';
+// Bingアカウントキー
+$ACCOUNT_KEY = 'i9Deyl1gN1mUCKwOMmHrEswDV61gsddzuq+E/4SPPHc';
+$bot = new LineBot($CHANNEL_ID, $CHANNEL_SECRET, $CHANNEL_MID);
+$bot->sendText('「%s」デスネ...');
+$bot->sendImage($ACCOUNT_KEY);
