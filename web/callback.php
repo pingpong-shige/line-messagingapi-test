@@ -1,5 +1,5 @@
 <?php
-/*$accessToken = getenv('LINE_CHANNEL_ACCESS_TOKEN');
+$accessToken = getenv('LINE_CHANNEL_ACCESS_TOKEN');
 
 //ユーザーからのメッセージ取得
 $json_string = file_get_contents('php://input');
@@ -12,13 +12,13 @@ $text = $jsonObj->{"events"}[0]->{"message"}->{"text"};
 $replyToken = $jsonObj->{"events"}[0]->{"replyToken"};
 
 
-$type = $jsonObj->{"events"}[0]->{"message"}->{"type"};
+/*$type = $jsonObj->{"events"}[0]->{"message"}->{"type"};
 //スタンプ取得
 $text = $jsonObj->{"events"}[0]->{"message"}->{"sticker"};
 //ReplyToken取得
 $replyToken = $jsonObj->{"STKTXT"=>"[おねがい]","AT_RECV_MODE"=>"2",
 			"STKVER"=>"100","STDID"=>"4","STKPKGID"=>"1",
-			"SKIP_BADGE_COUNT"=>"true"};
+			"SKIP_BADGE_COUNT"=>"true"};*/
 //メッセージ以外のときは何も返さず終了
 if($type != "text"){
 	exit;
@@ -206,10 +206,10 @@ function chat($text) {
     $res = json_decode(file_get_contents($api_url, false, $stream));
  
     return $res->utt;
-}*/
+}
 
 
-require_once('LineBot.php');
+/*require_once('LineBot.php');
 // LINE:チャンネルID
 $CHANNEL_ID = '1491932896';
 // LINE:チャンネルシークレット
@@ -220,7 +220,7 @@ $CHANNEL_MID = '@ust3694v';
 $ACCOUNT_KEY = 'i9Deyl1gN1mUCKwOMmHrEswDV61gsddzuq+E/4SPPHc';
 $bot = new LineBot($CHANNEL_ID, $CHANNEL_SECRET, $CHANNEL_MID);
 $bot->sendText('「%s」デスネ...');
-$bot->sendImage($ACCOUNT_KEY);
+$bot->sendImage($ACCOUNT_KEY);*/
 
 /**
 * BingSeachAPIで画像を取得するサンプルコード
