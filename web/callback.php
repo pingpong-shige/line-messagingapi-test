@@ -193,7 +193,9 @@ function chat($text) {
     $req_body = array('utt' => $text);
 	
 	
-    $req_body['context'] = $send_message;
+    $req_body['context'] = $text;
+	
+    $req_body['mode'] = 'srtr'
 	
     
     $headers = array(
