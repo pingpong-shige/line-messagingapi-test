@@ -191,6 +191,10 @@ function chat($text) {
     $api_key = getenv('DOCOMO_API_KEY');
     $api_url = sprintf('https://api.apigw.smt.docomo.ne.jp/dialogue/v1/dialogue?APIKEY=%s', $api_key);
     $req_body = array('utt' => $text);
+	
+	
+    $req_body['context'] = $send_message;
+	
     
     $headers = array(
         'Content-Type: application/json; charset=UTF-8',
