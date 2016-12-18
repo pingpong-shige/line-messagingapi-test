@@ -195,7 +195,7 @@ function chat($text) {
 	
     $req_body['context'] = $text;
 	
-    $req_body['mode'] = 'srtr'
+    // $req_body['mode'] = 'srtr'
 	
     
     $headers = array(
