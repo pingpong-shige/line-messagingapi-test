@@ -166,14 +166,12 @@ if ($text == 'はい') {
 
   $response_format_text = [
       "type" => "text",
-			echo "---------------------2-------------------\n";
       "text" =>  $response,
   ];
 }
 
 $post_data = [
 	"replyToken" => $replyToken,
-	echo "--------------------3--------------------\n";
 	"messages" => [$response_format_text]
 ];
 
@@ -220,7 +218,6 @@ function chat($text) {
     $options = array(
         'http'=>array(
             'method'  => 'POST',
-						echo "---------------------11-------------------\n";
             'header'  => implode("\r\n", $headers),
             'content' => json_encode($req_body),
             )
