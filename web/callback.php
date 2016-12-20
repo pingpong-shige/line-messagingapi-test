@@ -202,8 +202,9 @@ function chat($text) {
 
 
     // $req_body['mode'] = 'srtr'
-
+		echo "----------------------------------------\n";
 		var_dump($global_context)
+		echo "----------------------------------------\n";
 
     $headers = array(
         'Content-Type: application/json; charset=UTF-8',
