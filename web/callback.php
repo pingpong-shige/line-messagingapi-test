@@ -165,7 +165,7 @@ if ($text == 'はい') {
 
   $response_format_text = [
       "type" => "text",
-      "text" =>  $response."aa".$global_context."aa",
+      "text" =>  $response,
   ];
 }
 
@@ -203,6 +203,7 @@ function chat($text) {
 
     // $req_body['mode'] = 'srtr'
 
+		var_dump($global_context)
 
     $headers = array(
         'Content-Type: application/json; charset=UTF-8',
