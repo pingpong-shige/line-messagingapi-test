@@ -165,7 +165,7 @@ if ($text == 'はい') {
 
   $response_format_text = [
       "type" => "text",
-      "text" =>  $response,
+      "text" =>  $response."aa".$global_context."aa",
   ];
 }
 
