@@ -203,7 +203,7 @@ function chat($text) {
 
     // $req_body['mode'] = 'srtr'
 		echo "----------------------------------------\n";
-		var_dump($global_context)
+		var_dump($global_context);
 		echo "----------------------------------------\n";
 
     $headers = array(
