@@ -162,8 +162,7 @@ if ($text == 'はい') {
 } else {
   //ドコモの雑談データ取得
   $response = chat($text);
-	echo "---------------------1-------------------\n";
-
+	echo "---------------------1-------------------";
   $response_format_text = [
       "type" => "text",
       "text" =>  $response,
@@ -179,7 +178,7 @@ $ch = curl_init("https://api.line.me/v2/bot/message/reply");
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-echo "---------------------4-------------------\n";
+echo "---------------------4-------------------";
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'Content-Type: application/json; charser=UTF-8',
@@ -195,25 +194,25 @@ function chat($text) {
     $api_key = getenv('DOCOMO_API_KEY');
     $api_url = sprintf('https://api.apigw.smt.docomo.ne.jp/dialogue/v1/dialogue?APIKEY=%s', $api_key);
     $req_body = array('utt' => $text);
-		echo "----------------------5------------------\n";
+		echo "----------------------5------------------";
 
 		if ($global_context == "") {
-		echo "----------------------6------------------\n";
+		echo "----------------------6------------------";
 			# code...
 		}else {
 			$req_body['context'] = $global_context;
-			echo "-------------------7---------------------\n";
+			echo "-------------------7---------------------";
 		}
 
 
     // $req_body['mode'] = 'srtr'
-		echo "----------------------8------------------\n";
+		echo "----------------------8------------------";
 		var_dump($global_context);
-		echo "----------------------9------------------\n";
+		echo "----------------------9------------------";
 
     $headers = array(
         'Content-Type: application/json; charset=UTF-8',
-				echo "-------------------10---------------------\n";
+				echo "-------------------10---------------------";
     );
     $options = array(
         'http'=>array(
@@ -223,11 +222,11 @@ function chat($text) {
             )
         );
     $stream = stream_context_create($options);
-		echo "--------------------12--------------------\n";
+		echo "--------------------12--------------------";
     $res = json_decode(file_get_contents($api_url, false, $stream));
 
 		$global_context = $res->context;
-		echo "----------------------13------------------\n";
+		echo "----------------------13------------------";
     return $res->utt;
 }
 
