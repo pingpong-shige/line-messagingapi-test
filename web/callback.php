@@ -1,5 +1,7 @@
 <?php
 $accessToken = getenv('LINE_CHANNEL_ACCESS_TOKEN');
+$global_context = "";
+global $global_context;
 
 //ユーザーからのメッセージ取得
 $json_string = file_get_contents('php://input');
@@ -160,10 +162,10 @@ if ($text == 'はい') {
 } else {
   //ドコモの雑談データ取得
   $response = chat($text);
- 
+
   $response_format_text = [
       "type" => "text",
-      "text" =>  $response
+      "text" =>  $response,
   ];
 }
 
@@ -191,13 +193,17 @@ function chat($text) {
     $api_key = getenv('DOCOMO_API_KEY');
     $api_url = sprintf('https://api.apigw.smt.docomo.ne.jp/dialogue/v1/dialogue?APIKEY=%s', $api_key);
     $req_body = array('utt' => $text);
-	
-	
-    $req_body['context'] = $text;
-	
+
+		if ($global_context == "") {
+			# code...
+		}else {
+			$req_body['context'] = $global_context;
+		}
+
+
     // $req_body['mode'] = 'srtr'
-	
-    
+
+
     $headers = array(
         'Content-Type: application/json; charset=UTF-8',
     );
@@ -210,7 +216,8 @@ function chat($text) {
         );
     $stream = stream_context_create($options);
     $res = json_decode(file_get_contents($api_url, false, $stream));
- 
+
+		$global_context = $res->context;
     return $res->utt;
 }
 
@@ -232,7 +239,7 @@ $bot->sendImage($ACCOUNT_KEY);*/
 * BingSeachAPIで画像を取得するサンプルコード
 *
 * @param string $keyword 検索ワード
-* @return object 
+* @return object
 */
 
 /*function search_bing($keyword) {
